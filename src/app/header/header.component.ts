@@ -6,7 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  isToggled: boolean =true;
 
+  toggle() {
+    this.isToggled = !this.isToggled;
+    console.log(this.isToggled)
+  }
   constructor() { }
 
   ngOnInit(): void {
