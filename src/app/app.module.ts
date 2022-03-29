@@ -8,31 +8,21 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { RouterModule, Routes } from '@angular/router';
-import { BeveragesComponent } from './beverages/beverages.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ContactComponent } from './contact/contact.component';
 import { FaqComponent } from './faq/faq.component';
-import { GourmetComponent } from './gourmet/gourmet.component';
-import { GroceriesComponent } from './groceries/groceries.component';
-import { HouseholdComponent } from './household/household.component';
 import { OffersComponent } from './offers/offers.component';
-import { PackagedfoodsComponent } from './packagedfoods/packagedfoods.component';
-import { PersonalcareComponent } from './personalcare/personalcare.component';
-import { ProductsComponent } from './products/products.component';
 import { RegisteredComponent } from './registered/registered.component';
 import { registerLocaleData } from '@angular/common';
+import { ItemViewsComponent } from './item-views/item-views.component';
 const routes:Routes=[
   {path:'', component:IndexComponent},
   {path:'about', component:AboutComponent},
+  {path:'login', component:LoginComponent},
   {path:'faq', component:FaqComponent},
-  {path:'gourmet', component:GourmetComponent},
-  {path:'groceries', component:GroceriesComponent},
-  {path:'household', component:HouseholdComponent},
   {path:'offers', component:OffersComponent},
-  {path:'packagedfoods', component:PackagedfoodsComponent},
-  {path:'personalcare', component:PersonalcareComponent},
-  {path:'product', component:ProductsComponent},
-  {path:'registered', component:RegisteredComponent}
+  {path:'registered', component:RegisteredComponent},
+  {path:'contact', component:ContactComponent}
 ]
 @NgModule({
   declarations: [
@@ -42,18 +32,12 @@ const routes:Routes=[
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    BeveragesComponent,
     CheckoutComponent,
     ContactComponent,
     FaqComponent,
-    GourmetComponent,
-    GroceriesComponent,
-    HouseholdComponent,
     OffersComponent,
-    PackagedfoodsComponent,
-    PersonalcareComponent,
-    ProductsComponent,
-    RegisteredComponent
+    RegisteredComponent,
+    ItemViewsComponent
   ],
   imports: [
     BrowserModule,
