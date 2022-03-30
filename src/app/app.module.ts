@@ -15,14 +15,19 @@ import { OffersComponent } from './offers/offers.component';
 import { RegisteredComponent } from './registered/registered.component';
 import { registerLocaleData } from '@angular/common';
 import { ItemViewsComponent } from './item-views/item-views.component';
+import { NgImageSliderModule } from 'ng-image-slider';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import {HttpClientModule} from "@angular/common/http"
+
 const routes:Routes=[
   {path:'', component:IndexComponent},
   {path:'about', component:AboutComponent},
   {path:'login', component:LoginComponent},
   {path:'faq', component:FaqComponent},
   {path:'offers', component:OffersComponent},
-  {path:'registered', component:RegisteredComponent},
-  {path:'contact', component:ContactComponent}
+  {path:'register', component:RegisteredComponent},
+  {path:'contact', component:ContactComponent},
+  {path:'products', component:ItemViewsComponent}
 ]
 @NgModule({
   declarations: [
@@ -42,7 +47,11 @@ const routes:Routes=[
   imports: [
     BrowserModule,
     NgbModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    NgImageSliderModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
