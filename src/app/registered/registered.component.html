@@ -3,9 +3,10 @@
         <h2>Register Here</h2>
         <div class="login-form-grids">
             <h5>profile information</h5>
-            <form [formGroup]="registrationForm" (ngSubmit)="register()">
-                <input formControlName="first_name" type="text" placeholder="First Name..." required=" ">
-                <input formControlName="last_name" type="text" placeholder="Last Name..." required=" ">
+            <form>
+                <input [(ngModel)]="userDetails.first_name" type="text" placeholder="First Name..." required=" ">
+                <input [(ngModel)]="userDetails.last_name" type="text" placeholder="Last Name..." required=" ">
+                <input [(ngModel)]="userDetails.mobile_number" type="text" placeholder="phone number" required=" ">
 
                 <div class="register-check-box">
                     <div class="check">
@@ -13,15 +14,14 @@
                     </div>
                 </div>
                 <h6>Login information</h6>
-                <input formControlName="email" type="email" placeholder="Email Address" required=" ">
-                <input formControlName="password" type="password" placeholder="Password" required=" ">
-                <input formControlName="mobile_number" type="password" placeholder="Password Confirmation" required=" ">
+                <input [(ngModel)]="userDetails.email" type="email" placeholder="Email Address" required=" ">
+                <input [(ngModel)]="userDetails.password" type="password" placeholder="Password" required=" ">
                 <div class="register-check-box">
                     <div class="check">
                         <label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>I accept the terms and conditions</label>
                     </div>
                 </div>
-                <input type="submit" value="Register">
+                <input (click)="createUsers(userDetails)" type="submit" value="Register">
             </form>
         </div>
         <div class="register-home">

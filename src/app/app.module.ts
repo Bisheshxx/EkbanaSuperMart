@@ -17,7 +17,8 @@ import { registerLocaleData } from '@angular/common';
 import { ItemViewsComponent } from './item-views/item-views.component';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
-import {HttpClientModule} from "@angular/common/http"
+import {HttpClientModule} from "@angular/common/http";
+import { SingleproductComponent } from './singleproduct/singleproduct.component'
 
 const routes:Routes=[
   {path:'', component:IndexComponent},
@@ -27,7 +28,9 @@ const routes:Routes=[
   {path:'offers', component:OffersComponent},
   {path:'register', component:RegisteredComponent},
   {path:'contact', component:ContactComponent},
-  {path:'products', component:ItemViewsComponent}
+  {path:'products', component:ItemViewsComponent},
+  {path:'single', component:SingleproductComponent},
+  {path:'checkout', component:CheckoutComponent}
 ]
 @NgModule({
   declarations: [
@@ -42,7 +45,8 @@ const routes:Routes=[
     FaqComponent,
     OffersComponent,
     RegisteredComponent,
-    ItemViewsComponent
+    ItemViewsComponent,
+    SingleproductComponent
   ],
   imports: [
     BrowserModule,
