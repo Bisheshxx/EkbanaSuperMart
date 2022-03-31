@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
       },
       complete:()=>{
         this.authState.setAuthState(true);
-        this.router.navigate([''])
+        this.router.navigate(['profile'])
       }
     })
   }

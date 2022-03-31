@@ -20,6 +20,7 @@ import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 import { SingleproductComponent } from './singleproduct/singleproduct.component'
 import { AuthInterceptor } from './shared/auth.interceptor';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes:Routes=[
   {path:'', component:IndexComponent},
@@ -32,6 +33,7 @@ const routes:Routes=[
   {path:'products', component:ItemViewsComponent},
   {path:'single', component:SingleproductComponent},
   {path:'checkout', component:CheckoutComponent},
+  {path:'profile', component:ProfileComponent},
 ]
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ const routes:Routes=[
     RegisteredComponent,
     ItemViewsComponent,
     SingleproductComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
