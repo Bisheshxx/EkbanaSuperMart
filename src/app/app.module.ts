@@ -17,8 +17,9 @@ import { registerLocaleData } from '@angular/common';
 import { ItemViewsComponent } from './item-views/item-views.component';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 import { SingleproductComponent } from './singleproduct/singleproduct.component'
+import { AuthInterceptor } from './shared/auth.interceptor';
 
 const routes:Routes=[
   {path:'', component:IndexComponent},
@@ -30,7 +31,7 @@ const routes:Routes=[
   {path:'contact', component:ContactComponent},
   {path:'products', component:ItemViewsComponent},
   {path:'single', component:SingleproductComponent},
-  {path:'checkout', component:CheckoutComponent}
+  {path:'checkout', component:CheckoutComponent},
 ]
 @NgModule({
   declarations: [
@@ -46,7 +47,7 @@ const routes:Routes=[
     OffersComponent,
     RegisteredComponent,
     ItemViewsComponent,
-    SingleproductComponent
+    SingleproductComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +58,13 @@ const routes:Routes=[
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
