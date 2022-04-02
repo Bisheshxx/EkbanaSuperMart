@@ -3,7 +3,7 @@
     <div *ngFor="let item of Product.data" class="col-md-4 top_brand_left">
         <div class="hover14 column">
             <div class="agile_top_brand_left_grid">
-                <div class="agile_top_brand_left_grid_pos">
+                <div *ngIf="item.unitPrice[0].newPrice != 0" class="agile_top_brand_left_grid_pos">
                     <img src="assets/img/offer.png" alt=" " class="img-responsive">
                 </div>
                 <div class="agile_top_brand_left_grid1">
