@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     .subscribe({
       next:(result)=>{               
         this.responseHandler(result)
-
+        
         this.authState.setAuthState(true);
         this.router.navigate(['profile'])   
       }
