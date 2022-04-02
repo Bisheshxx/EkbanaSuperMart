@@ -2,3 +2,8 @@ img {
     width: 200px;
     object-fit: contain;
 }
+
+.agile_top_brand_left_grid_pos {
+    width: 45px !important;
+    object-fit: contain !important;
+}
