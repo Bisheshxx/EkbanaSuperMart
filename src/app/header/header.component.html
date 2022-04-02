@@ -7,8 +7,10 @@
             <div class="agile-login">
                 <ul>
                     <li><a routerLink="register"> Create Account </a></li>
-                    <li><a routerLink="login">Login</a></li>
+                    <li *ngIf="!isSignedIn"><a routerLink="login">Login</a></li>
+                    <li *ngIf="isSignedIn"><a routerLink="profile">Profile</a></li>
                     <li><a routerLink="contact">Help</a></li>
+                    <button class="btn btn-outline-primary" (click)="signOut()" *ngIf="isSignedIn">Log out</button>
                 </ul>
             </div>
             <div class="product_list_header">

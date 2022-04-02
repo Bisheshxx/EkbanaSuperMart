@@ -21,6 +21,7 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 import { SingleproductComponent } from './singleproduct/singleproduct.component'
 import { AuthInterceptor } from './shared/auth.interceptor';
 import { ProfileComponent } from './profile/profile.component';
+import { Router } from 'express';
 
 
 
@@ -64,6 +65,7 @@ const routes:Routes=[
     HttpClientModule,
     
   ],
+  exports:[RouterModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

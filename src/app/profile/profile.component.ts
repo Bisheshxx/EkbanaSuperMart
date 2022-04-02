@@ -38,8 +38,8 @@ export class ProfileComponent implements OnInit {
     // )
   }
   onSubmit() {
-    // TODO: Use EventEmitter with form value
-    this.userApi.updateUser(this.profileForm.value)
+    this.userApi.updateUser
+    (this.profileForm.value)
     .subscribe(
       (data:{})=>{
         alert('success')
