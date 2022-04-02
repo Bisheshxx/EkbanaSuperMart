@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: true,
+  production: false,
   apiURL : 'https://uat.ordering-dalle.ekbana.net/api/v4',
   auth:'/auth',
   client_id:'2',

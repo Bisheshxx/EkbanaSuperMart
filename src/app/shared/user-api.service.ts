@@ -15,8 +15,7 @@ export class UserApiService {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       'Api-key':environment.ApiKey,
-      'Authorization':  'Bearer '+localStorage.getItem('access_token')  
-
+      'Authorization':  'Bearer '+localStorage.getItem('access_token'),
     }),
   };
   createUsers(user:any):Observable<User>{
@@ -41,6 +40,12 @@ export class UserApiService {
       this.apiURL+'/profile/show',
       this.httpOptions)
       .pipe(retry(1), catchError(this.handleError))
+  }
+  updateUser(user:any){
+    return this.http
+    .patch(
+      this.apiURL+'/profile',user,this.httpOptions
+    ).pipe(retry(1), catchError(this.handleError))
   }
   handleError(error: any) {
     let errorMessage = '';

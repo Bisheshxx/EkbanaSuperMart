@@ -22,6 +22,8 @@ import { SingleproductComponent } from './singleproduct/singleproduct.component'
 import { AuthInterceptor } from './shared/auth.interceptor';
 import { ProfileComponent } from './profile/profile.component';
 
+
+
 const routes:Routes=[
   {path:'', component:IndexComponent},
   {path:'about', component:AboutComponent},
@@ -59,7 +61,8 @@ const routes:Routes=[
     NgImageSliderModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    
   ],
   providers: [
     {
@@ -70,4 +73,5 @@ const routes:Routes=[
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule {}
