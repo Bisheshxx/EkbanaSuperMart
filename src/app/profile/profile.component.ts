@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { UserApiService } from '../shared/user-api.service';
 import { environment } from 'src/environments/environment';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { FormGroup, FormControl } from '@angular/forms';
 import * as $ from 'jquery'
 
 
@@ -13,9 +12,11 @@ import * as $ from 'jquery'
 })
 export class ProfileComponent implements OnInit {
   User:any={}
-  closeResult = '';
-  constructor(public userApi:UserApiService,private modalService: NgbModal) {
-    
+  profileForm = new FormGroup({
+    'first-name': new FormControl(''),
+    'last-name': new FormControl(''),
+  });
+  constructor(public userApi:UserApiService) {    
    }
   ngOnInit(): void {
     this.loadUser()   
@@ -28,5 +29,23 @@ export class ProfileComponent implements OnInit {
       this.User=data
     })
   }
-
+  updateUser(updatedData:any){
+    // this.userApi.updateUser()
+    // .subscribe(
+    //   (data:{})=>{
+    //     alert('data has been updated')
+    //   }
+    // )
+  }
+  onSubmit() {
+    // TODO: Use EventEmitter with form value
+    this.userApi.updateUser(this.profileForm.value)
+    .subscribe(
+      (data:{})=>{
+        alert('success')
+        location.reload()
+      }
+    )
+    console.warn(this.profileForm.value);
+  }
 }
