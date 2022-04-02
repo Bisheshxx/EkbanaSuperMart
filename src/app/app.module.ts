@@ -22,6 +22,7 @@ import { SingleproductComponent } from './singleproduct/singleproduct.component'
 import { AuthInterceptor } from './shared/auth.interceptor';
 import { ProfileComponent } from './profile/profile.component';
 import { Router } from 'express';
+import { ProductsComponent } from './products/products.component';
 
 
 
@@ -33,7 +34,7 @@ const routes:Routes=[
   {path:'offers', component:OffersComponent},
   {path:'register', component:RegisteredComponent},
   {path:'contact', component:ContactComponent},
-  {path:'products', component:ItemViewsComponent},
+  {path:'products', component:ProductsComponent},
   {path:'single', component:SingleproductComponent},
   {path:'checkout', component:CheckoutComponent},
   {path:'profile', component:ProfileComponent},
@@ -54,6 +55,7 @@ const routes:Routes=[
     ItemViewsComponent,
     SingleproductComponent,
     ProfileComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,
