@@ -1,3 +1,4 @@
+import { NgxPaginationModule } from 'ngx-pagination';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
@@ -23,6 +24,7 @@ import { AuthInterceptor } from './shared/auth.interceptor';
 import { ProfileComponent } from './profile/profile.component';
 import { Router } from 'express';
 import { ProductsComponent } from './products/products.component';
+
 
 
 
@@ -65,7 +67,7 @@ const routes:Routes=[
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    
+    NgxPaginationModule    
   ],
   exports:[RouterModule],
   providers: [

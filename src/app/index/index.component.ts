@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgImageSliderComponent } from 'ng-image-slider';
-declare let $: any;
+import * as $ from 'jquery'
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
@@ -24,15 +24,15 @@ export class IndexComponent implements OnInit {
   }]
   constructor() { }
 
-  ngOnInit(): void {
-    $('#demo1').skdslider({
-      'delay': 5000,
-      'animationSpeed': 2000,
-      'showNextPrev': true,
-      'showPlayButton': true,
-      'autoSlide': true,
-      'animationType': 'fading'
-  });
+  ngOnInit(): void {    
+  //   $('#demo1').skdslider({
+  //     'delay': 5000,
+  //     'animationSpeed': 2000,
+  //     'showNextPrev': true,
+  //     'showPlayButton': true,
+  //     'autoSlide': true,
+  //     'animationType': 'fading'
+  // });
   }
 
 }

@@ -7,7 +7,9 @@ import { ProductsService } from '../shared/products.service';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
+  p :number =1
   Offer!:boolean
+  total!:string
   Product:any={}
   constructor(public productApi:ProductsService) { }
 
@@ -17,9 +19,8 @@ export class ProductsComponent implements OnInit {
   loadProducts(){
     return this.productApi.getProducts().subscribe((data:{})=>{
       this.Product=data
-      console.log(this.Product.data)
+      this.total = this.Product.data.length
+      console.log(this.total)
     })
   }
-
-
 }
