@@ -8,13 +8,19 @@ import { ProductsService } from '../shared/products.service';
 })
 export class ProductsComponent implements OnInit {
   p :number =1
+  ppp :number =9
   Offer!:boolean
   total!:string
   Product:any={}
+  term!: string;
+  
   constructor(public productApi:ProductsService) { }
 
   ngOnInit(): void {
     this.loadProducts()
+  }
+  onChange(event: any){
+    this.ppp=event
   }
   loadProducts(){
     return this.productApi.getProducts().subscribe((data:{})=>{

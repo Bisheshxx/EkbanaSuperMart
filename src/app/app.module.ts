@@ -24,9 +24,8 @@ import { AuthInterceptor } from './shared/auth.interceptor';
 import { ProfileComponent } from './profile/profile.component';
 import { Router } from 'express';
 import { ProductsComponent } from './products/products.component';
-
-
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ProductfilterPipe } from './pipes/productfilter.pipe';
 
 const routes:Routes=[
   {path:'', component:IndexComponent},
@@ -58,6 +57,7 @@ const routes:Routes=[
     SingleproductComponent,
     ProfileComponent,
     ProductsComponent,
+    ProductfilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -67,7 +67,8 @@ const routes:Routes=[
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    NgxPaginationModule    
+    NgxPaginationModule,
+    Ng2SearchPipeModule    
   ],
   exports:[RouterModule],
   providers: [
