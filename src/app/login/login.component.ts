@@ -16,19 +16,25 @@ export class LoginComponent implements OnInit {
   errors:any = null;
   @Input() userLogin={username:'', password:'',client_id:this.clientID,client_secret:this.clientsecret, grant_type:this.grantType} 
   constructor( public userApi:UserApiService, public router: Router, private token: TokenService,private authState: AuthStateService) { }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+  }
   signIn(data:any){
-    this.userApi.loginUser(this.userLogin)
-    .subscribe({
-      next:(result)=>{               
-        this.responseHandler(result)
-        
+    this.userApi.loginUser(this.userLogin).subscribe(
+      (result) => {
+        this.responseHandler(result);
+      },
+      (error) => {
+        this.errors = error.error;
+      },
+      () => {
         this.authState.setAuthState(true);
-        this.router.navigate(['profile'])   
+        this.router.navigate(['profile']);
       }
-    })
+    );
   }
   responseHandler(data:any) {
     this.token.handleData(data.access_token);
   }
 }
+  

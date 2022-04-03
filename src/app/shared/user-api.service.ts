@@ -30,9 +30,7 @@ export class UserApiService {
     return this.http
     .post<User>(
     this.apiURL + this.auth + '/login',
-    user,
-    this.httpOptions)
-    .pipe(retry(1), catchError(this.handleError))
+    user)
   }
   getUser(){
     return this.http
