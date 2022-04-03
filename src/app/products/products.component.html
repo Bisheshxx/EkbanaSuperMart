@@ -15,33 +15,26 @@
             <div class="categories">
                 <h2>Categories</h2>
                 <ul class="cate">
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>All Categories</a></li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Signatures</a></li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Snacks</a></li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Dalle Momo</a></li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Rice and Noodles</a></li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Frozer Items</a></li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Momo</a></li>
+                    <li><a (click)="CategorySelect('All')"><i class="fa fa-arrow-right" aria-hidden="true"></i>All Categories</a></li>
+                    <li><a (click)="CategorySelect('SIGNATURE')"><i  class="fa fa-arrow-right" aria-hidden="true"></i>Signatures</a></li>
+                    <li><a (click)="CategorySelect('Snacks')"><i class="fa fa-arrow-right" aria-hidden="true"></i>Snacks</a></li>
+                    <li><a (click)="CategorySelect('MOMO')"><i class="fa fa-arrow-right" aria-hidden="true"></i>Momo</a></li>
+                    <li><a (click)="CategorySelect('DALLE MOMO')"><i class="fa fa-arrow-right" aria-hidden="true"></i>Dalle Momo</a></li>
+                    <li><a (click)="CategorySelect('NON VEG')"><i class="fa fa-arrow-right" aria-hidden="true"></i>Non-Veg</a></li>
+                    <li><a (click)="CategorySelect('RICE AND NOODLES')"><i class="fa fa-arrow-right" aria-hidden="true"></i>Rice and Noodles</a></li>
+                    <li><a (click)="CategorySelect('FROZEN ITEMS')"><i class="fa fa-arrow-right" aria-hidden="true"></i>FROZEN ITEMS</a></li>
                 </ul>
             </div>
         </div>
         <div class="col-md-8 products-right">
             <div class="products-right-grid">
                 <div class="products-right-grids">
-                    <div class="sorting">
-                        <select class="frm-field required sect">
-                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Default sorting</option>
-                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by popularity</option> 
-                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by average rating</option>					
-                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by price</option>								
-                        </select>
-                    </div>
                     <div class="sorting-left">
                         <select [ngModel]="ppp" (ngModelChange)="onChange($event)" class="frm-field required sect">
                             <option value="9"><i class="fa fa-arrow-right" aria-hidden="true"></i>Item on page 9</option>
                             <option value="18"><i class="fa fa-arrow-right" aria-hidden="true"></i>Item on page 18</option> 
                             <option value="32"><i class="fa fa-arrow-right" aria-hidden="true"></i>Item on page 32</option>					
-                            <option value={{Product.data.length}}><i class="fa fa-arrow-right" aria-hidden="true"></i>All</option>								
+                            <option value={{Product.data}}><i class="fa fa-arrow-right" aria-hidden="true"></i>All</option>								
                         </select>
                     </div>
                     <div class="clearfix"> </div>
@@ -51,7 +44,7 @@
                 <!-- map -->
                 <div class="row">
                     <!-- mapped data -->
-                    <div *ngFor="let item of Product.data | paginate:{itemsPerPage:this.ppp,currentPage:p,totalItems: total | filter:term}" class="col-md-4 top_brand_left">
+                    <div *ngFor="let item of Product | productfilter:Category.toString() | paginate:{itemsPerPage:this.ppp,currentPage:p,totalItems: total}" class="col-md-4 top_brand_left">
                         <div class="hover14 column">
                             <div class="agile_top_brand_left_grid">
                                 <div *ngIf="item.unitPrice[0].newPrice != 0" class="agile_top_brand_left_grid_pos">

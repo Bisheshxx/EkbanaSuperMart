@@ -1,12 +1,17 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { Console } from 'console';
 
 @Pipe({
   name: 'productfilter'
 })
 export class ProductfilterPipe implements PipeTransform {
 
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
+  transform(ProductData: Array<any>, Category: string): any {
+    // console.log(ProductData,Category)
+    if(ProductData && Category != 'All'){
+      return ProductData.filter((result)=>result.categoryTitle.indexOf(Category)>-1)
+    }
+    return ProductData;
   }
 
 }

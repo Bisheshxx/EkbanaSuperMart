@@ -11,22 +11,29 @@ export class ProductsComponent implements OnInit {
   ppp :number =9
   Offer!:boolean
   total!:string
+  response:any={}
   Product:any={}
   term!: string;
+  Category:String = 'All'
   
   constructor(public productApi:ProductsService) { }
 
   ngOnInit(): void {
     this.loadProducts()
+    // console.log("loadproducts",this.Product)
   }
   onChange(event: any){
     this.ppp=event
   }
+  CategorySelect(keyword:string){
+    this.Category=keyword
+  }
   loadProducts(){
-    return this.productApi.getProducts().subscribe((data:{})=>{
-      this.Product=data
-      this.total = this.Product.data.length
-      console.log(this.total)
+    return this.productApi.getProducts().subscribe((result:{})=>{
+      this.response=result
+      this.Product = this.response.data
+      this.total = this.Product.meta.pagination.total
+      console.log('result',this.Product)
     })
   }
 }

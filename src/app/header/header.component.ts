@@ -13,7 +13,6 @@ export class HeaderComponent implements OnInit {
 
   toggle() {
     this.isToggled = !this.isToggled;
-    console.log(this.isToggled)
   }
   constructor(
     private auth: AuthStateService,
@@ -23,7 +22,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.auth.userAuthState.subscribe((val) => {
       this.isSignedIn = val;
-      console.log(this.isSignedIn)
     });
   }
   signOut() {

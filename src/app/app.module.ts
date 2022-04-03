@@ -68,8 +68,7 @@ const routes:Routes=[
     FormsModule,
     HttpClientModule,
     NgxPaginationModule,
-    Ng2SearchPipeModule    
-  ],
+    ],
   exports:[RouterModule],
   providers: [
     {
