@@ -13,7 +13,8 @@ export class ProductsService {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       'Api-key':environment.ApiKey,
-      'Warehouse-Id':environment.WarehouseId
+      'Warehouse-Id':environment.WarehouseId,
+      'Authorization':  'Bearer '+localStorage.getItem('access_token')
     }),
   };
   constructor(private http:HttpClient) { }
@@ -30,7 +31,10 @@ export class ProductsService {
     )
     .pipe(retry(1), catchError(this.handleError))
   }
-  addToCart(pid:number){
+  addToCart(product:number){
+    return this.http.post(this.apiURL+'/cart-product',product,
+    this.httpOptions).
+    pipe(retry(1), catchError(this.handleError))
     
   }
   handleError(error: any) {

@@ -76,7 +76,7 @@
                                                         <input type="hidden" name="currency_code" value="USD">
                                                         <input type="hidden" name="return" value=" ">
                                                         <input type="hidden" name="cancel_return" value=" ">
-                                                        <input (click)="getProductId(item.id)" type="submit" name="submit" value="Add to cart" class="button">
+                                                        <input (click)="addToCart(item.id,item.unitPrice[0].id,1)" type="submit" name="submit" value="Add to cart" class="button">
                                                     </fieldset>
                                                 </form>
                                             </div>

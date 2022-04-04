@@ -16,6 +16,7 @@ export class ProductsComponent implements OnInit {
   Product:any=[]
   Category:String = 'All'
   ProductId!:number
+  Cart:any={}
   
   constructor(
     public productApi:ProductsService, 
@@ -40,9 +41,13 @@ export class ProductsComponent implements OnInit {
     return this.productApi.getProducts().subscribe((result:{})=>{
       this.response=result
       this.Product = this.response.data
-      console.log(this.Product)
       this.total = this.response.meta.pagination.total
     })
+  }
+  addToCart(id:number,priceId:number,quantity:number){
+    this.Cart={'productId':id,'priceId':priceId,'quantity':quantity}
+    console.log(this.Cart)
+    return this.productApi.addToCart(this.Cart).subscribe()
   }
 }
 
