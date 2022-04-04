@@ -54,7 +54,7 @@
                                     <figure>
                                         <div class="snipcart-item block">
                                             <div class="snipcart-thumb">
-                                                <a href="single.html"><img title=" " alt=" " src={{item.images[0].imageName}}></a>
+                                                <a (click)="getProductId(item.id)"><img title=" " alt=" " src={{item.images[0].imageName}}></a>
                                                 <p>{{item.title}}</p>
                                                 <div *ngIf="item.unitPrice[0].newPrice != 0" class="forOffer">
                                                     <h4>Rs. {{item.unitPrice[0].newPrice}} <span>Rs. {{item.unitPrice[0].sellingPrice}}</span></h4>
@@ -76,7 +76,7 @@
                                                         <input type="hidden" name="currency_code" value="USD">
                                                         <input type="hidden" name="return" value=" ">
                                                         <input type="hidden" name="cancel_return" value=" ">
-                                                        <input type="submit" name="submit" value="Add to cart" class="button">
+                                                        <input (click)="getProductId(item.id)" type="submit" name="submit" value="Add to cart" class="button">
                                                     </fieldset>
                                                 </form>
                                             </div>

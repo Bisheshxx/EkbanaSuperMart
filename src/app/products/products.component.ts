@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../shared/products.service';
-
+import { SharedDataService } from '../shared/shared-data.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -12,15 +13,18 @@ export class ProductsComponent implements OnInit {
   Offer!:boolean
   total!:string
   response:any={}
-  Product:any={}
-  term!: string;
+  Product:any=[]
   Category:String = 'All'
+  ProductId!:number
   
-  constructor(public productApi:ProductsService) { }
+  constructor(
+    public productApi:ProductsService, 
+    private shared:SharedDataService,
+    public router: Router,
+    ) { }
 
   ngOnInit(): void {
     this.loadProducts()
-    // console.log("loadproducts",this.Product)
   }
   onChange(event: any){
     this.ppp=event
@@ -28,12 +32,18 @@ export class ProductsComponent implements OnInit {
   CategorySelect(keyword:string){
     this.Category=keyword
   }
+  getProductId(Id:number){
+    this.shared.changeProductId(Id)
+    this.router.navigate(['single']);
+  }
   loadProducts(){
     return this.productApi.getProducts().subscribe((result:{})=>{
       this.response=result
       this.Product = this.response.data
-      this.total = this.Product.meta.pagination.total
-      console.log('result',this.Product)
+      console.log(this.Product)
+      this.total = this.response.meta.pagination.total
     })
   }
 }
+
+//need to create child components and send Product,p,ppp,total and CategorySelect keyword

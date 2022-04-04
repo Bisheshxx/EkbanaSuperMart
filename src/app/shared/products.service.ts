@@ -24,6 +24,15 @@ export class ProductsService {
     )
     .pipe(retry(1), catchError(this.handleError))
   }
+  getSingleItem(id:number){
+    return this.http.get(this.apiURL + '/product/' + id,
+    this.httpOptions
+    )
+    .pipe(retry(1), catchError(this.handleError))
+  }
+  addToCart(pid:number){
+    
+  }
   handleError(error: any) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
