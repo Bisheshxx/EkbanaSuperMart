@@ -26,6 +26,9 @@ import { Router } from 'express';
 import { ProductsComponent } from './products/products.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ProductfilterPipe } from './pipes/productfilter.pipe';
+import { SeachpippePipe } from './shared/seachpippe.pipe';
+import { SearchpipePipe } from './pipes/search/searchpipe.pipe';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 const routes:Routes=[
   {path:'', component:IndexComponent},
@@ -58,6 +61,9 @@ const routes:Routes=[
     ProfileComponent,
     ProductsComponent,
     ProductfilterPipe,
+    SeachpippePipe,
+    SearchpipePipe,
+    SearchResultComponent,
   ],
   imports: [
     BrowserModule,

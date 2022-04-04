@@ -8,6 +8,7 @@ import { ThisReceiver } from '@angular/compiler';
   providedIn: 'root'
 })
 export class ProductsService {
+ 
   apiURL=environment.apiURL
   httpOptions = {
     headers: new HttpHeaders({
@@ -45,6 +46,24 @@ export class ProductsService {
       this.apiURL + '/cart-product/' + id,{'quantity':q},
       this.httpOptions
     )
+    .pipe(retry(1), catchError(this.handleError))
+  }
+  removeItemFromCart(id: any) {
+    const headers={
+        'Content-Type':'application/json',
+        'Api-key':environment.ApiKey,
+        'Warehouse-Id':environment.WarehouseId,
+        'cartProductId':id
+      }
+    return this.http.delete(
+      this.apiURL + '/cart-product/' + id,
+      {headers}
+    )
+    .pipe(retry(1), catchError(this.handleError))
+  }
+  getCheckOut() {
+    return this.http.get(this.apiURL + '/cart',
+    this.httpOptions)
     .pipe(retry(1), catchError(this.handleError))
   }
   handleError(error: any) {

@@ -42,18 +42,10 @@
                     <td class="invert">{{calculateTotal(item.product.unitPrice[0].newPrice, item.product.unitPrice[0].oldPrice, item.quantity)}}</td>
                     <td class="invert">
                         <div class="rem">
-                            <div class="close1"> </div>
+                            <div (click)="deleteCart(item.id)" class="close1">X</div>
                         </div>
-                        <script>
-                            $(document).ready(function(c) {
-                                $('.close1').on('click', function(c) {
-                                    $('.rem1').fadeOut('slow', function(c) {
-                                        $('.rem1').remove();
-                                    });
-                                });
-                            });
-                        </script>
                     </td>
+
                 </tr>
                 <!--quantity-->
                 <script>
@@ -77,7 +69,8 @@
                 <h4>Continue to basket</h4>
                 <ul>
                     <li *ngFor="let item of CartDetails;let i= index">{{item.product.title}} <i>-</i> <span>{{calculateTotal(item.product.unitPrice[0].newPrice, item.product.unitPrice[0].oldPrice, item.quantity)}} </span></li>
-                    <li>Total <i>-</i> <span>$84.00</span></li>
+                    <li>Delivery Charge <i>-</i> <span>Rs. {{CheckOutDetails.deliveryCharge}}</span></li>
+                    <li>Total <i>-</i> <span>Rs. {{CheckOutDetails.total}}</span></li>
                 </ul>
             </div>
             <div class="checkout-right-basket">
