@@ -27,7 +27,6 @@ import { ProductsComponent } from './products/products.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ProductfilterPipe } from './pipes/productfilter.pipe';
 import { SeachpippePipe } from './shared/seachpippe.pipe';
-import { SearchpipePipe } from './pipes/search/searchpipe.pipe';
 import { SearchResultComponent } from './search-result/search-result.component';
 
 const routes:Routes=[
@@ -38,10 +37,15 @@ const routes:Routes=[
   {path:'offers', component:OffersComponent},
   {path:'register', component:RegisteredComponent},
   {path:'contact', component:ContactComponent},
-  {path:'products', component:ProductsComponent},
+  {
+    path:'products', 
+    component:ProductsComponent,
+
+},
   {path:'single', component:SingleproductComponent},
   {path:'checkout', component:CheckoutComponent},
   {path:'profile', component:ProfileComponent},
+  {path:'search', component:SearchResultComponent},
 ]
 @NgModule({
   declarations: [
@@ -62,7 +66,6 @@ const routes:Routes=[
     ProductsComponent,
     ProductfilterPipe,
     SeachpippePipe,
-    SearchpipePipe,
     SearchResultComponent,
   ],
   imports: [

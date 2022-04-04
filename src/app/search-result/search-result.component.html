@@ -1,1 +1,102 @@
-<p>search-result works!</p>
+<!-- mapped data -->
+<div class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+            <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+            <li class="active">Products</li>
+        </ol>
+    </div>
+</div>
+<!-- //breadcrumbs -->
+<!--- products --->
+<div class="products">
+    <div class="container">
+        <div class="col-md-4 products-left">
+            <input type="text" placeholder="Search..">
+        </div>
+        <div class="col-md-8 products-right">
+            <div class="products-right-grid">
+
+                <div class="products-right-grids">
+                    <div class="sorting-left">
+                        <select [ngModel]="ppp" (ngModelChange)="onChange($event)" class="frm-field required sect">
+                            <option value="9"><i class="fa fa-arrow-right" aria-hidden="true"></i>Item on page 9</option>
+                            <option value="18"><i class="fa fa-arrow-right" aria-hidden="true"></i>Item on page 18</option> 
+                            <option value="32"><i class="fa fa-arrow-right" aria-hidden="true"></i>Item on page 32</option>					
+                            <option value={{Product.data}}><i class="fa fa-arrow-right" aria-hidden="true"></i>All</option>								
+                        </select>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+            <div class="agile_top_brands_grids">
+                <!-- map -->
+                <div class="row">
+                    <!-- mapped data -->
+                    <div *ngFor="let item of Product | productfilter:Category.toString() | paginate:{itemsPerPage:this.ppp,currentPage:p,totalItems: total}" class="col-md-4 top_brand_left">
+                        <div class="hover14 column">
+                            <div class="agile_top_brand_left_grid">
+                                <div *ngIf="item.unitPrice[0].newPrice != 0" class="agile_top_brand_left_grid_pos">
+                                    <img src="assets/img/offer.png" alt=" " class="img-responsive">
+                                </div>
+                                <div class="agile_top_brand_left_grid1">
+                                    <figure>
+                                        <div class="snipcart-item block">
+                                            <div class="snipcart-thumb">
+                                                <a (click)="getProductId(item.id)"><img title=" " alt=" " src={{item.images[0].imageName}}></a>
+                                                <p>{{item.title}}</p>
+                                                <div *ngIf="item.unitPrice[0].newPrice != 0" class="forOffer">
+                                                    <h4>Rs. {{item.unitPrice[0].newPrice}} <span>Rs. {{item.unitPrice[0].sellingPrice}}</span></h4>
+                                                </div>
+                                                <div *ngIf="!(item.unitPrice[0].newPrice != 0)" class="forOffer">
+                                                    <h4>Rs. {{item.unitPrice[0].sellingPrice}}</h4>
+                                                </div>
+
+                                            </div>
+                                            <div class="snipcart-details top_brand_home_details">
+                                                <form action="#" method="post">
+                                                    <fieldset>
+                                                        <input type="hidden" name="cmd" value="_cart">
+                                                        <input type="hidden" name="add" value="1">
+                                                        <input type="hidden" name="business" value=" ">
+                                                        <input type="hidden" name="item_name" value="Fortune Sunflower Oil">
+                                                        <input type="hidden" name="amount" value="35.99">
+                                                        <input type="hidden" name="discount_amount" value="1.00">
+                                                        <input type="hidden" name="currency_code" value="USD">
+                                                        <input type="hidden" name="return" value=" ">
+                                                        <input type="hidden" name="cancel_return" value=" ">
+                                                        <input (click)="addToCart(item.id,item.unitPrice[0].id,1)" type="submit" name="submit" value="Add to cart" class="button">
+                                                    </fieldset>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <nav class="numbering">
+                <pagination-controls (pageChange)="p = $event" previousLabel="Previous" nextLabel="Next" screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page">
+                </pagination-controls>
+                <!-- <ul class="pagination paging">
+                    <li>
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul> -->
+            </nav>
+        </div>

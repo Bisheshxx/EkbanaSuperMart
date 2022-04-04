@@ -1,21 +1,20 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { catchError, Observable, retry, throwError } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { ThisReceiver } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
- 
   apiURL=environment.apiURL
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       'Api-key':environment.ApiKey,
       'Warehouse-Id':environment.WarehouseId
-    }),
+    })    
   };
   constructor(private http:HttpClient) { }
   getProducts(){
@@ -64,6 +63,11 @@ export class ProductsService {
   getCheckOut() {
     return this.http.get(this.apiURL + '/cart',
     this.httpOptions)
+    .pipe(retry(1), catchError(this.handleError))
+  }
+  Search(keyword:string){
+    return this.http.get(
+      this.apiURL+'/product?query='+keyword,this.httpOptions    )
     .pipe(retry(1), catchError(this.handleError))
   }
   handleError(error: any) {

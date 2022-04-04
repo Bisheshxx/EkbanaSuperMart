@@ -52,7 +52,7 @@ export class CheckoutComponent implements OnInit {
   deleteCart(id:any){
     console.log(id)
     return this.productApi.removeItemFromCart(id).subscribe(()=>{
-      location.reload()
+      this.ngOnInit
     })
   }
   getCheckoutData(){
