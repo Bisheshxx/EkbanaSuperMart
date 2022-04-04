@@ -30,12 +30,12 @@ export class ProfileComponent implements OnInit {
     })
   }
   updateUser(updatedData:any){
-    // this.userApi.updateUser()
-    // .subscribe(
-    //   (data:{})=>{
-    //     alert('data has been updated')
-    //   }
-    // )
+    this.userApi.updateUser(updatedData)
+    .subscribe(
+      (data:{})=>{
+        alert('data has been updated')
+      }
+    )
   }
   onSubmit() {
     this.userApi.updateUser

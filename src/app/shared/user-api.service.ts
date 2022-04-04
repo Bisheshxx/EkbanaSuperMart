@@ -31,6 +31,7 @@ export class UserApiService {
     .post<User>(
     this.apiURL + this.auth + '/login',
     user)
+    .pipe(retry(1), catchError(this.handleError))
   }
   getUser(){
     return this.http
@@ -46,13 +47,14 @@ export class UserApiService {
     ).pipe(retry(1), catchError(this.handleError))
   }
   handleError(error: any) {
+    console.log(error)
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
       // Get client-side error
       errorMessage = error.error.message;
     } else {
       // Get server-side error
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.statusText}`;
     }
     window.alert(errorMessage);
     return throwError(() => {

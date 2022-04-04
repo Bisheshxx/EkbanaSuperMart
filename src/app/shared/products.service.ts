@@ -13,8 +13,7 @@ export class ProductsService {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       'Api-key':environment.ApiKey,
-      'Warehouse-Id':environment.WarehouseId,
-      'Authorization':  'Bearer '+localStorage.getItem('access_token')
+      'Warehouse-Id':environment.WarehouseId
     }),
   };
   constructor(private http:HttpClient) { }
@@ -33,18 +32,29 @@ export class ProductsService {
   }
   addToCart(product:number){
     return this.http.post(this.apiURL+'/cart-product',product,
-    this.httpOptions).
-    pipe(retry(1), catchError(this.handleError))
-    
+    this.httpOptions)
+    .pipe(retry(1), catchError(this.handleError))    
+  }
+  getCartData(){
+    return this.http.get(this.apiURL + '/cart',
+    this.httpOptions)
+    .pipe(retry(1), catchError(this.handleError))
+  }
+  updateCart(id:number,q:number){
+    return this.http.patch(
+      this.apiURL + '/cart-product/' + id,{'quantity':q},
+      this.httpOptions
+    )
+    .pipe(retry(1), catchError(this.handleError))
   }
   handleError(error: any) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
       // Get client-side error
-      errorMessage = error.error.message;
+      errorMessage = error.errors.message;
     } else {
       // Get server-side error
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.statusText}`;
     }
     window.alert(errorMessage);
     return throwError(() => {
