@@ -6,11 +6,11 @@
             </div>
             <div class="agile-login">
                 <ul>
-                    <li *ngIf="!isSignedIn"><a routerLink="register"> Create Account </a></li>
-                    <li *ngIf="!isSignedIn"><a routerLink="login">Login</a></li>
-                    <li *ngIf="isSignedIn"><a routerLink="profile">Profile</a></li>
+                    <li *ngIf="!UserState"><a routerLink="register"> Create Account </a></li>
+                    <li *ngIf="!UserState"><a routerLink="login">Login</a></li>
+                    <li *ngIf="UserState"><a routerLink="profile">Profile</a></li>
                     <li><a routerLink="contact">Help</a></li>
-                    <li *ngIf="isSignedIn"><a (click)="signOut()" routerLink="profile">Log out</a></li>
+                    <li *ngIf="UserState"><a (click)="signOut()" routerLink="profile">Log out</a></li>
 
                 </ul>
             </div>

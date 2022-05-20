@@ -40,8 +40,7 @@ const routes:Routes=[
   {
     path:'products', 
     component:ProductsComponent,
-
-},
+  },
   {path:'single', component:SingleproductComponent},
   {path:'checkout', component:CheckoutComponent},
   {path:'profile', component:ProfileComponent},

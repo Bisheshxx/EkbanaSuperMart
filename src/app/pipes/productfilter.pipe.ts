@@ -7,7 +7,6 @@ import { Console } from 'console';
 export class ProductfilterPipe implements PipeTransform {
 
   transform(ProductData: Array<any>, Category: string): any {
-    // console.log(ProductData,Category)
     if(ProductData && Category != 'All'){
       return ProductData.filter((result)=>result.categoryTitle.indexOf(Category)>-1)
     }

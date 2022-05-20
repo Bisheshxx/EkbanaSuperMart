@@ -9,10 +9,9 @@ import { SharedDataService } from '../shared/shared-data.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  isSignedIn!: boolean;
   isToggled: boolean =true;
   searchValue!:string
-  UserState: boolean = false;
+  UserState!: boolean
   toggle() {
     this.isToggled = !this.isToggled;
   }
@@ -20,18 +19,13 @@ export class HeaderComponent implements OnInit {
     private auth: AuthStateService,
     public router: Router,
     public token: TokenService,
-    private shared:SharedDataService,) { }
-
+    private shared:SharedDataService,) { }    
   ngOnInit(): void {
-    this.VerifyUserState()
-    console.log(this.UserState)
-    this.auth.userAuthState.subscribe((val) => {
-      this.isSignedIn = val;
-    });    
+    this.VerifyUserState()  
   }
   VerifyUserState(){
-    if(localStorage.getItem('access_token')){
-      this.UserState = true
+    if(localStorage.getItem('access_token')){      
+       this.auth.userAuthState.subscribe(data=>this.UserState=data)
     }
     else{
       this.UserState = false
@@ -45,6 +39,7 @@ export class HeaderComponent implements OnInit {
     this.auth.setAuthState(false);
     localStorage.removeItem('access_token')
     this.router.navigate(['login']);
+    this.ngOnInit()
   }
 
 }

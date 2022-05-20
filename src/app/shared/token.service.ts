@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenService {
+  private _loggedInSource= new BehaviorSubject<boolean>(false);
+  loggedIn= this._loggedInSource.asObservable();
+  
   private issuer={
     login:'https://uat.ordering-dalle.ekbana.net/api/v4/auth/login',
     register:'https://uat.ordering-dalle.ekbana.net/api/v4/auth/register'
@@ -34,7 +38,12 @@ export class TokenService {
     return JSON.parse(atob(jwtPayload));
   }
   isLoggedIn() {
-    return this.isValidToken();
+    if(this.isValidToken()){
+      this._loggedInSource.next(true)
+    }
+    else{
+      this._loggedInSource.next(false)
+    }
   }
   // Remove token
   removeToken() {
